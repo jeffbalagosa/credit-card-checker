@@ -42,20 +42,17 @@ const batch = [
 const validateCred = (array) => {
   let runningTotal = 0;
 
-  for (let i = array.lenth - 1; i >= 0; i--) {
+  let counter = 0;
+  for (let i = array.length - 1; i >= 0; i--) {
+    counter++;
     let num = array[i];
-    let numIndex = array.indexOf(num);
-    if (!numIndex % 2 === 0) {
-      runningTotal += num;
-    } else {
-      let doubleNum = num * 2;
-      if (doubleNum > 9) {
-        doubleNum -= 9;
-        runningTotal += doubleNum;
-      } else {
-        runningTotal += num;
+    if (counter % 2 === 0) {
+      num = num * 2;
+      if (num > 9) {
+        num = num - 9;
       }
     }
+    runningTotal += num;
   }
 
   if (runningTotal % 10 === 0) {
@@ -64,3 +61,19 @@ const validateCred = (array) => {
     return "Credit card is invalid.";
   }
 };
+
+console.log(`valid1 = ${validateCred(valid1)}`);
+console.log(`valid2 = ${validateCred(valid2)}`);
+console.log(`valid3 = ${validateCred(valid3)}`);
+console.log(`valid4 = ${validateCred(valid4)}`);
+console.log(`valid5 = ${validateCred(valid5)}`);
+console.log(`invalid1 = ${validateCred(invalid1)}`);
+console.log(`invalid2 = ${validateCred(invalid2)}`);
+console.log(`invalid3 = ${validateCred(invalid3)}`);
+console.log(`invalid4 = ${validateCred(invalid4)}`);
+console.log(`invalid5 = ${validateCred(invalid5)}`);
+console.log(`mystery1 = ${validateCred(mystery1)}`);
+console.log(`mystery2 = ${validateCred(mystery2)}`);
+console.log(`mystery3 = ${validateCred(mystery3)}`);
+console.log(`mystery4 = ${validateCred(mystery4)}`);
+console.log(`mystery5 = ${validateCred(mystery5)}`);
