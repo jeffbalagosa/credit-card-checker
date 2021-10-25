@@ -56,24 +56,21 @@ const validateCred = (array) => {
   }
 
   if (runningTotal % 10 === 0) {
-    return "Credit card is valid.";
+    return "valid";
   } else {
-    return "Credit card is invalid.";
+    return "invalid";
   }
 };
 
-console.log(`valid1 = ${validateCred(valid1)}`);
-console.log(`valid2 = ${validateCred(valid2)}`);
-console.log(`valid3 = ${validateCred(valid3)}`);
-console.log(`valid4 = ${validateCred(valid4)}`);
-console.log(`valid5 = ${validateCred(valid5)}`);
-console.log(`invalid1 = ${validateCred(invalid1)}`);
-console.log(`invalid2 = ${validateCred(invalid2)}`);
-console.log(`invalid3 = ${validateCred(invalid3)}`);
-console.log(`invalid4 = ${validateCred(invalid4)}`);
-console.log(`invalid5 = ${validateCred(invalid5)}`);
-console.log(`mystery1 = ${validateCred(mystery1)}`);
-console.log(`mystery2 = ${validateCred(mystery2)}`);
-console.log(`mystery3 = ${validateCred(mystery3)}`);
-console.log(`mystery4 = ${validateCred(mystery4)}`);
-console.log(`mystery5 = ${validateCred(mystery5)}`);
+const findInvalidCards = (cardArray) => {
+  const invalidCards = [];
+  for (let i = 0; i < cardArray.length; i++) {
+    const card = cardArray[i];
+    if (validateCred(card) === "invalid") {
+      invalidCards.push(card);
+    }
+  }
+  return invalidCards;
+};
+
+console.log(findInvalidCards(batch));
