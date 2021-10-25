@@ -40,34 +40,27 @@ const batch = [
 
 // Add your functions below:
 const validateCred = (array) => {
-  let sum = 0;
-  for (let i = 0; i < array.length; i++) {
-    if (i === array[0]) {
-      sum = sum + array[i];
+  let runningTotal = 0;
+
+  for (let i = array.lenth - 1; i >= 0; i--) {
+    let num = array[i];
+    let numIndex = array.indexOf(num);
+    if (!numIndex % 2 === 0) {
+      runningTotal += num;
     } else {
-      let multipliedNum = array[i] * 2;
-      if (multipliedNum < 9) {
-        multipliedNum = multipliedNum - 9;
+      let doubleNum = num * 2;
+      if (doubleNum > 9) {
+        doubleNum -= 9;
+        runningTotal += doubleNum;
       } else {
-        sum = sum + multipliedNum;
+        runningTotal += num;
       }
     }
   }
-  if (sum % 10 === 0) {
+
+  if (runningTotal % 10 === 0) {
     return "Credit card is valid.";
   } else {
     return "Credit card is invalid.";
   }
 };
-
-console.log(`Result here should be valid => ${validateCred(valid1)}`);
-console.log(`Result here should be valid => ${validateCred(valid2)}`);
-console.log(`Result here should be valid => ${validateCred(valid3)}`);
-console.log(`Result here should be valid => ${validateCred(valid4)}`);
-console.log(`Result here should be valid => ${validateCred(valid5)}`);
-
-console.log(`Result here should be invalid => ${validateCred(invalid1)}`);
-console.log(`Result here should be invalid => ${validateCred(invalid2)}`);
-console.log(`Result here should be invalid => ${validateCred(invalid3)}`);
-console.log(`Result here should be invalid => ${validateCred(invalid4)}`);
-console.log(`Result here should be invalid => ${validateCred(invalid5)}`);
