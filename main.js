@@ -73,4 +73,30 @@ const findInvalidCards = (cardArray) => {
   return invalidCards;
 };
 
-console.log(findInvalidCards(batch));
+const idInvalidCardCompanies = (invalidCardsArray) => {
+  const companies = [];
+  for (let i = 0; i < invalidCardsArray.length; i++) {
+    const card = invalidCardsArray[i];
+    const firstNum = card[0];
+    if (firstNum === 3) {
+      companies.push("Amex");
+    } else if (firstNum === 4) {
+      companies.push("Visa");
+    } else if (firstNum === 5) {
+      companies.push("Mastercard");
+    } else if (firstNum === 6) {
+      companies.push("Discover");
+    } else {
+      companies.push("Company not found");
+    }
+  }
+
+  let dupeCompaniesRemoved = [];
+  companies.forEach((company) => {
+    if (!dupeCompaniesRemoved.includes(company)) {
+      dupeCompaniesRemoved.push(company);
+    }
+  });
+
+  return dupeCompaniesRemoved;
+};
